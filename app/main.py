@@ -8,6 +8,10 @@ app = FastAPI(
     version = '1.0.0'
 )
 
+#Serve static files for cover images
+app.mount('/static', StaticFiles(directory='app/static'), name='static') 
+
+
 #Include API routers
 app.include_router(authors.router, prefix='/authors', tags=['Authors'])
 app.include_router(books.router, prefix='/books', tags=['Books'])
